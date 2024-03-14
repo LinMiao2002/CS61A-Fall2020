@@ -3,3 +3,4 @@ swap-pane
 .ok_messages
 .ok_storage.db
 __pycache__
+.DS_Store
