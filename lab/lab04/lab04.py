@@ -119,26 +119,31 @@ def max_subseq(n, t):
     5
     """
     "*** YOUR CODE HERE ***"
-    def find_max(start,end):
-        max = n // pow(10,end-1) % 10
-        i = end 
-        index = i
-        num = n // pow(10,end-1)
-        while i <= start:
-            if max <= num % 10:
-                max = num % 10
-                index = i
-            num //= 10
-            i += 1
-        return max,index
+    # def find_max(start,end):
+    #     max = n // pow(10,end-1) % 10
+    #     i = end 
+    #     index = i
+    #     num = n // pow(10,end-1)
+    #     while i <= start:
+    #         if max <= num % 10:
+    #             max = num % 10
+    #             index = i
+    #         num //= 10
+    #         i += 1
+    #     return max,index
+    # if t == 0:
+    #     return 0
+    # elif n // pow(10,t) == 0:
+    #     return n
+    # else:
+    #     max,index = find_max(len(str(n)),t)
+    #     return max*pow(10,t-1)+max_subseq(n-n//pow(10,index-1)*pow(10,index-1),t-1)
     if t == 0:
         return 0
-    elif n // pow(10,t) == 0:
+    elif n < 10:
         return n
     else:
-        max,index = find_max(len(str(n)),t)
-        return max*pow(10,t-1)+max_subseq(n-n//pow(10,index-1)*pow(10,index-1),t-1)
-
+        return max(max_subseq(n // 10, t - 1) * 10 + n % 10, max_subseq(n // 10,t))
 
 def add_chars(w1, w2):
     """
