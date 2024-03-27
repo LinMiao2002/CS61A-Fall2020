@@ -394,6 +394,8 @@ def shakespeare_tokens(path='shakespeare.txt', url='https://www.composingprogram
 
 def random_sent():
     import random
+    tokens = shakespeare_tokens()
+    table = build_successors_table(tokens)
     return construct_sent(random.choice(table['.']), table)
 
 # Tree ADT
